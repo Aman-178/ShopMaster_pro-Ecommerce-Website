@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="Admin.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Welcome to Dashboard!</h1>
+        <div class="mb-4">
+            <button class="btn btn-primary mr-2 button1">Add Product</button>
+            <button class="btn btn-danger mr-2 button2">Delete Product</button>
+            <button class="btn btn-warning mr-2 button3">Update Product</button>
+            <form action="submit-form" method="post" class="d-inline">
+                <button class="btn btn-success button4" type="submit">Check Product</button>
+            </form>
+            <button class="btn btn-info button5" type="button">Check Order Item</button>
+        </div>
+        <!-- Add Product Form -->
+        <div class="card mb-4" id="AddForm" >
+            <div class="card-header">
+                <h2>Add Product</h2>
+            </div>
+            <div class="card-body">
+                <form method="post" action="addproduct" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="productname">Product Name:</label>
+                        <input type="text" class="form-control" id="productname" name="productname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="productprice">Product Price:</label>
+                        <input type="text" class="form-control" id="productprice" name="productprice" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Product Category:</label>
+                        <input type="text" class="form-control" id="category" name="category" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="companyname">Product Company Name:</label>
+                        <input type="text" class="form-control" id="companyname" name="companyname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Product Description:</label>
+                        <textarea class="form-control" id="description" name="description" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="productimage">Product Image:</label>
+                        <input type="file" class="form-control-file" id="productimage" name="productimage" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Product</button>
+                </form>
+            </div>
+        </div>
+        <!-- Update Product Form -->
+        <div class="card mb-4" id="UpdateForm" style="display: none;">
+            <div class="card-header">
+                <h2>Update Product</h2>
+            </div>
+            <div class="card-body">
+                <form method="post" action="updateproduct">
+                    <div class="form-group">
+                        <label for="productid">Product ID:</label>
+                        <input type="text" class="form-control" id="productid" name="productid" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="productcolumn">Column Name:</label>
+                        <input type="text" class="form-control" id="productcolumn" name="productcolumn" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Productvalue">Value:</label>
+                        <input type="text" class="form-control" id="Productvalue" name="Productvalue" required>
+                    </div>
+                    <button type="submit" class="btn btn-warning">Update Product</button>
+                </form>
+            </div>
+        </div>
+        <!-- Order Table -->
+        <div class="card mb-4" id="order-table" style="display: none;">
+            <div class="card-header">
+                <h2>Change Order Status</h2>
+            </div>
+            <div class="card-body">
+                <form id="changestatus" method="post" action="AdminUpdateStatusServlet">
+                    <div class="form-group">
+                        <label for="email">Username:</label>
+                        <input type="email" class="form-control" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="OrderID">Order ID:</label>
+                        <input type="number" class="form-control" name="OrderID" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Status:</label>
+                        <input type="text" class="form-control" name="status" required>
+                    </div>
+                    <button type="submit" class="btn btn-success">Change Status</button>
+                </form>
+                <table class="table mt-4">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Product Name</th>
+                            <th>Total Amount</th>
+                            <th>Status</th>
+                            <th>Username</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tbody">
+                        <!-- Table rows go here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="Admin.js"></script>
+</body>
+</html>

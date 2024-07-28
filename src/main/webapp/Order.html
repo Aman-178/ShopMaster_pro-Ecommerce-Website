@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Order List</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-image: linear-gradient(  lightsalmon, lightpink,lemonchiffon);
+            color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+        }
+
+        .profile-icon {
+            font-size: 24px;
+            margin-right: 15px;
+        }
+
+        h1 {
+            margin: 20px 0;
+            text-align: center;
+            font-size: 30px;
+            background: linear-gradient(90deg,olive, lavender, palegoldenrod);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-left: 15px;
+            font-weight: bold;
+        }
+
+        .order-table {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+        }
+        
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .order-table {
+                width: 100%;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>My Orders</h1>
+    <div class="profile-icon">👤</div>
+</div>
+
+<div class="order-table">
+    <table>
+        <thead class="tableheader">
+            <tr>
+                <th>Order ID</th>
+                <th>Product Name</th>
+                <th>Total Amount</th>
+                <th>Status</th>
+<!--                <th>Action</th>-->
+            </tr>
+        </thead>
+        <tbody class="tbody">
+       
+        </tbody>
+    </table>
+</div>
+
+    
+    <script>
+    // Fetch Api here.....
+    
+    async function OrderData(){
+        try{
+            const url='OrderList';
+        
+        
+                const response=await fetch(url);
+                if(!response.ok){
+                    console.log("Api Doesn't Response");
+                }else{
+                     const data = await response.json();
+                    console.log(data);
+                    
+                    const tbody=document.querySelector('.tbody');
+                    tbody.innerHtml='';
+                    
+                     data.forEach(item=>{
+                         const tr=document.createElement('tr');
+                         const td=document.createElement('td');
+                         td.textContent=item.productId;
+                         const td1=document.createElement('td');
+                         td1.textContent=item.productName;
+                         const td2=document.createElement('td');
+                         td2.textContent=item.productPrice;
+                         const td3=document.createElement('td');
+                         td3.textContent=item.status;
+                         tr.appendChild(td);
+                         tr.appendChild(td1);
+                         tr.appendChild(td2);
+                         tr.appendChild(td3);
+                         tbody.appendChild(tr);
+                     });
+                    
+                }
+        
+        }catch(error){
+            console.log(error);
+        }
+    }
+    
+    
+    
+    
+    
+   const token = localStorage.getItem('accessToken');
+   if(!token){
+       tbody.innerHtml='';
+   }else{
+       OrderData();
+   }
+    
+    
+    
+    
+    
+    </script>
+</body>
+</html>

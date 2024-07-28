@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>ShopMaster Pro</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+         <link rel="stylesheet" href="Style.css"/>
+    </head>
+    <body>
+    <container id="conimg">
+        <img src="OIP(5)logo.png" alt="alt"/>
+    </container>
+        <div id="container">
+           <header class="header">
+<!--                    <form method="post" action="search" class="search">-->
+
+                        <div class="logo">
+                            <img src="OIP(5)logo.png" alt="Website Logo">
+                        </div>
+                        <div class="searchbar">
+                            <input type="search"  class='search' name="searchbar" placeholder="Search for products, brands and more">
+                            <button  class="search-button" onclick="search()">
+                                  <i class="fa fa-search"></i>
+                                </button>
+                        </div>
+<!--                    </form>//form-->
+                    <div class="user-options">
+                        <form method="get" action="loginpage">
+                            <div class="login">
+                                
+                              <button type="submit"><i class="fa-solid fa-user"></i>Login<i class="fa fa-angle-down" aria-hidden="true" ></i></button>
+                                <ul class="hidden-button-list">
+                                    <div class="ul-header">
+                                        <h3>New Customer?</h3>
+                                        <a><a href="SignUp.html" target="<h3 style="color: blue">Sign Up</h3></a>
+                                    </div>
+                                <li id="MyProfile"><img src="https://img.icons8.com/?size=100&id=20471&format=png&color=000000" width="20px" height="20px" alt="alt"/>  My Profile</li>
+<!--                                <li><img src="https://img.icons8.com/?size=100&id=UU2im0hihoyi&format=png&color=000000" width="20px" height="20px" alt="alt"/>Flipkart Plus Zone</li>-->
+                                <li id="Orders"><img src="https://img.icons8.com/?size=100&id=fzjuzxeyBy12&format=png&color=000000" width="20px" height="20px" alt="alt"/>Orders</li>
+<!--                                <li><img src="https://img.icons8.com/?size=100&id=WJfnYd7OU3ls&format=png&color=000000" width="20px" height="20px" alt="alt"/>Wishlist</li>
+                                <li><img src="https://img.icons8.com/?size=100&id=VZYQ99eH9Nb3&format=png&color=000000" width="20px" height="20px" alt="alt"/>Rewards</li>
+                                <li><img src="https://img.icons8.com/?size=100&id=56200&format=png&color=000000" width="20px" height="20px" alt="alt"/>Gift Cards</li>-->
+                            </ul>
+                            
+                            
+                        </div>
+                        </form>
+
+                        
+                        <div class="cart">
+                    
+                            
+                                <button >
+                                    <div id="Addvalue">0</div>
+                                     <i class="fa fa-shopping-cart"></i>
+                              </button>
+                            
+                                
+                            
+                        </div>
+<!--                        <div class="seller">
+                            <i class="fa fa-store"></i>
+                        </div>-->
+                        <div class="vertical">
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                                 <ul class="hidden-list">
+                                     <li><i  class="fa fa-bell" aria-hidden="true"></i>Notification Prefrences</li>
+                                      <li><i class="fa fa-phone" aria-hidden="true"></i>24*7 Customer Care</li>
+                                      <li><img  class="vertical-image" src="https://img.icons8.com/?size=100&id=0PTYqcrrBXka&format=png&color=000000" width="20px" height="20px" alt="alt"/>Advertise</li>
+                                      <li><img  class="vertical-image" src="https://img.icons8.com/?size=100&id=VGQlJM067vkN&format=png&color=000000" width="20px" height="20px" alt="alt"/>Download App</li>
+                                    </ul>
+                        </div>
+                    </div>
+           </header>
+            <Hero class="Hero">
+                <div class="productimagelist">
+                    
+
+                    <div class="mobiles" style="cursor: pointer;">
+                        <img src="mobile.webp" width="80px" height="80px" alt="sorry"/>
+                        <br>
+                        <span>Mobile</span>
+                        
+                        </ul>
+                    </div>
+                   
+                    <div class="electornics" style="cursor: pointer;">
+                        <img id="elecimg" src="https://rukminim2.flixcart.com/flap/64/64/image/69c6589653afdb9a.png?q=100" width="80px" height="80px" alt="sorry"/>
+                        <br>
+                        <span style="margin-left: 10px;">Laptop</span>
+                    </div>
+
+                </div>
+             
+                <div id="imageContainer">
+                      <!-- Images will be added dynamically here -->
+                      
+               </div>
+                <div id="Filter">
+                    <button type="filter"><i class="fa fa-filter" aria-hidden="true"></i> Filter</button>
+                    <ul class="Filter-List">
+                        <li class='LaptopBrand'>LAPTOP</li>
+                        <ul class='Laptoplist'>
+                            <li><input type='checkbox' value="HP">HP</li>
+                            <li><input type='checkbox' Value="LENOVO">LENOVO</li>
+                            <li><input type='checkbox' value="DELL">DELL</li>
+                        </ul>
+                        <li class='MobileBrand'>MOBILE</li>
+                         <ul class='Mobilelist'>
+                            <li><input type='checkbox' value="SAMSUNG">SAMSUNG</li>
+                            <li><input type='checkbox' value="APPLE">APPLE</li>
+                            <li><input type='checkbox' value="ONEPLUS">ONEPLUS</li>
+                        </ul>
+                        <li class='Prices'>PRICE</li>
+                        <ul class='Pricelist'>
+                            <label for="tenthousand">UNDER</label>
+                            <li><input type='checkbox' name="tenthousand" Value="50000.00">50000</li>
+                            <li><input type='checkbox' value="70000.00">70000</li>
+                            <li><input type='checkbox' value="80000.00">80000</li>
+                            <li><input type='checkbox' value="100000.00">100000</li>
+                        </ul>
+                    </ul>
+                </div>
+                 <span class="loader"></span>
+                 <div id="products-container">
+<!--                      Product will be added dynamically here-->   
+                 </div>
+                 <br><!-- comment -->
+                 <div id="checkout-container">
+                     <h5 style="font-size: large; fo0nt-weight:bolder; color:lightsalmon; margin-left: 10px;">Your Cart List:</h5>
+                     <div id="checkoutdata">
+                     
+                 </div>
+                 </div>
+                 <div class="Final-Checkout">
+                     
+                 </div>
+                 <div class="sucess">
+                     <button class="checoutbutton">CHECKOUT</button>
+                 </div>
+
+            </Hero>
+            <footer>
+                <div class="content">
+                    <div class="about">
+                        <h4 class="Header-Footer">About</h4>
+                        <span class="footer-content">Contact Us</span>
+                        <span class="footer-content">About Us</span>
+                        <span class="footer-content">Careers</span>
+                        <span class="footer-content">ShopMaster Pro Stories</span>
+                        <span class="footer-content">Press</span>
+                        <span class="footer-content">Corporate Information</span>
+                        
+                    </div>
+                    <div class="about0">
+                        <h4 class="Header-Footer">Group Companies</h4>
+                        <span class="footer-content" style="position:relative; left:5px">NA</span>
+                        
+                 
+                    </div>
+                    <div class="about1">
+                        <h4 class="Header-Footer">Help</h4>
+                        <span class="footer-content">Payments</span>
+                        <span class="footer-content">Shipping</span>
+                        <span class="footer-content">Cancellation & Returns</span>
+                        <span class="footer-content">FAQ</span>
+                        <span class="footer-content">Report Infrigment</span>
+                 
+                    </div>
+                </div>
+                <br>
+                <div class="content">
+                    <div class="about">
+                        <h4 class="Header-Footer">Customer Policy</h4>
+                        <span class="footer-content">Cancellation & Returns</span>
+                        <span class="footer-content">Terms Of Use</span>
+                        <span class="footer-content">Security</span>
+                        <span class="footer-content">Sitemap</span>
+                        <span class="footer-content">Grievance Redressal</span>
+                        <span class="footer-content">EPR Compllance</span>
+                        
+                    </div>
+                    <div class="Mail">
+                        <h4 class="Header-Footer">Mail US:</h4>
+                        <span class="footer-content" >ShopMaster Pro Internet Private Limited</span>
+                        <span class="footer-content" >amanjmu1999@gmail.com</span>
+                        
+                 
+                    </div>
+                    <div class="Register">
+                        <h4 class="Header-Footer">Registered Office Address:</h4>
+                        <span class="footer-content" >ShopMaster Pro Internet Private Limited</span>
+                        <span class="footer-content" >NA</span>
+                        <span class="footer-content" >Outer Ring Road,village,</span>
+                        <span class="footer-content" >Jamui,5601037,</span>
+                        <span class="footer-content" >India</span>
+                        <span class="footer-content" >CIN:U51109KA2012PTC06656546</span>
+                        <span class="footer-content" >Telephone:<span style="color: blue; cursor: pointer">9304493057</span></span>
+                 
+                    </div>
+                </div>
+                <div class="social-media"> 
+                    <h3 class="social" style="color:gray;">Social:</h3>
+                    <div class="social-icons">
+                        <img src="https://img.icons8.com/?size=100&id=4EDAGR8rPHBP&format=png&color=000000" width="30px" height="30px" alt="alt"/>
+                        <img src="https://img.icons8.com/?size=100&id=bG29Ckcdp6YP&format=png&color=000000" width="30px" height="30px" alt="alt"/>
+                        <img src="https://img.icons8.com/?size=100&id=19318&format=png&color=000000" width="30px" height="30px" alt="alt"/>
+                    </div>
+                    
+                </div>
+                <div class="footer-bottom">
+                    <div class="bottom-icon" >
+                        <img src="https://img.icons8.com/?size=100&id=13123&format=png&color=000000" width="20px" height="20px" alt="alt"/>
+                        <p>Become a Seller</p>
+                    </div>
+                      <div class="bottom-icon" >
+                        <img src="https://img.icons8.com/?size=100&id=BGhGk6LFFD1l&format=png&color=000000" width="20px" height="20px" alt="alt"/>
+                        <p>Advertise</p>
+                    </div>
+                      <div class="bottom-icon" >
+                        <img src="https://img.icons8.com/?size=100&id=aPAHTIQEcgiq&format=png&color=000000" width="20px" height="20px" alt="alt"/>
+                        <p>Gift Cards</p>
+                    </div>
+                      <div class="bottom-icon" >
+                        <img src="https://img.icons8.com/?size=100&id=rNPYqxf3RzNH&format=png&color=000000" width="20px" height="20px" alt="alt"/>
+                        <p>Help Center</p>
+                    </div>
+                      <div class="bottom-icon" >
+                        <img src="https://img.icons8.com/?size=100&id=UU2im0hihoyi&format=png&color=000000" width="20px" height="20px" alt="alt"/>
+                        <p>2007-2024 ShopMaster Pro.com</p>
+                    </div>
+                    <div class="bottom-img" >
+                       <img src="https://img.icons8.com/?size=100&id=jZH6ExvM4gCl&format=png&color=000000" width="15px" height="25px" alt="alt"/> 
+                       <img src="https://img.icons8.com/?size=100&id=jZH6ExvM4gCl&format=png&color=000000" width="15px" height="25px" alt="alt"/> 
+                       <img src="https://img.icons8.com/?size=100&id=jZH6ExvM4gCl&format=png&color=000000" width="15px" height="25px" alt="alt"/> 
+                       <img src="https://img.icons8.com/?size=100&id=jZH6ExvM4gCl&format=png&color=000000" width="15px" height="25px" alt="alt"/>
+                        <img src="https://img.icons8.com/?size=100&id=5JTcb83oDGrE&format=png&color=000000" width="15px" height="25px" alt="alt"/> 
+                        <img src="https://img.icons8.com/?size=100&id=5JTcb83oDGrE&format=png&color=000000" width="15px" height="25px" alt="alt"/> 
+                        <img src="https://img.icons8.com/?size=100&id=5JTcb83oDGrE&format=png&color=000000" width="15px" height="25px" alt="alt"/> 
+                        <img src="https://img.icons8.com/?size=100&id=5JTcb83oDGrE&format=png&color=000000" width="15px" height="25px" alt="alt"/> 
+                        <img src="https://img.icons8.com/?size=100&id=5JTcb83oDGrE&format=png&color=000000" width="15px" height="25px" alt="alt"/> 
+                        <img src="https://img.icons8.com/?size=100&id=5JTcb83oDGrE&format=png&color=000000" width="15px" height="25px" alt="alt"/> 
+                    </div>
+                    
+                </div>
+                
+            </footer>
+            
+        </div>
+        
+        <script src="Script.js"></script>
+    </body>
+</html>

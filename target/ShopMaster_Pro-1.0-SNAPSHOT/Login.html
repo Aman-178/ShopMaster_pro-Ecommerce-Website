@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-container {
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            padding: 20px;
+            width: 300px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .login-container label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        .login-container input[type=text], 
+        .login-container input[type=password],
+        .login-container input[type=email] {
+            width: calc(100% - 20px);
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .login-container button:hover {
+            background-color: #45a049;
+        }
+        #error-message{
+            margin-top: 10px;
+            margin-left:40px;
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        
+        <h2>Login Page</h2>
+        <form id="myForm">
+            <div>
+                <label for="firstname">First Name:</label>
+                <input type="text" id="firstname" name="firstname" required>
+            </div>
+            <div>
+                <label for="lastname">Last Name:</label>
+                <input type="text" id="lastname" name="lastname" required>
+            </div>
+            <div>
+                <label for="email">Email Id:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button id="button" type="submit">Login</button>
+        </form>
+        <div id="error-message" style="color: red;"></div>
+    </div>
+
+ <script>
+        // Get the error query parameter from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const errorMessage = urlParams.get('error');
+        
+        // If there's an error message, display it
+        if (errorMessage) {
+            console.log(errorMessage);
+            const messageError=document.getElementById('error-message');
+                    messageError.textContent = errorMessage;
+                    messageError.style.fontWeight='bold';
+        }
+        
+        const form=document.querySelector("#myForm");
+        form.addEventListener('submit',async function(event){
+            event.preventDefault();
+            const formData = new FormData(form);
+            
+            const username = formData.get('email');
+            const password = formData.get('password');
+            console.log(username);
+            console.log(password);
+            
+          try{
+                   const response=await fetch('LoginSuccess',{
+                   method:'POST',
+                   headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: new URLSearchParams({ username, password })
+               });
+               if(response.ok){
+                   const data=await response.json();
+                   localStorage.setItem('accessToken', data.accessToken);
+                   window.location.href = 'index.html';
+               }else{
+                   alert("invalid Details! Please SignUP");
+               }
+              }catch(error){
+                  console.log(error);
+              }
+            
+            
+            
+            
+        });
+        
+        
+        
+    </script>
+
+
+</body>
+</html>

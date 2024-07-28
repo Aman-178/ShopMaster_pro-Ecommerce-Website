@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background-image: linear-gradient(red,lightgrey,lightsalmon);
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+            
+        }
+        .container h2{
+            color: lightslategrey;
+        }
+
+        header {
+            margin-bottom: 30px;
+        }
+
+        .profile-details {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .user-info {
+            width: 100%;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .user-info h2 {
+            font-size: 1em;
+            margin: 10px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: lightsalmon;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+            .user-info h2 {
+                font-size: 0.9em;
+                margin: 8px 0;
+            }
+            button {
+                padding: 8px 16px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>My Profile<i style="margin-left: 5px;" class="fa fa-user" aria-hidden="true"></i></h1>
+        </header>
+        <section class="profile-details">
+            <div class="user-info">
+                <!-- User data will be dynamically loaded here -->
+            </div>
+            <button id="edit-profile-btn">Log Out</button>
+        </section>
+    </div>
+
+    <script>
+        const userinfo = document.querySelector('.user-info');
+        
+        // Log out functionality
+        const logOutBtn = document.getElementById('edit-profile-btn');
+        logOutBtn.addEventListener('click', function() {
+            localStorage.setItem('accessToken', '');
+            alert("Successfully logged out");
+            window.location.href = 'index.html'; 
+        });
+
+        // Fetch user data from API
+        async function fetchData() {
+            userinfo.innerHTML = ''; // Clear previous data
+            try {
+                const url = 'UserData';
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error('API did not respond');
+                }
+                const data = await response.json();
+                console.log(data);
+                data.forEach(userData => {
+                    const user = document.createElement('div');
+                    user.classList.add('usercontent');
+                    const name = document.createElement('h2');
+                    name.textContent = `Name: ${userData.firstname+" "+userData.lastname}`;
+                    const email = document.createElement('h2');
+                    email.textContent = `Email Id: ${userData.username}`;
+                    const mobile = document.createElement('h2');
+                    mobile.textContent = `Contact No: ${userData.mobileno}`;
+                    const address = document.createElement('h2');
+                    address.textContent = `Address: ${userData.address}`;
+                    
+                    user.appendChild(name);
+                    user.appendChild(email);
+                    user.appendChild(mobile);
+                    user.appendChild(address);
+                    userinfo.appendChild(user);
+                });
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+        fetchData();
+    </script>
+</body>
+</html>
